@@ -46,7 +46,7 @@ class _AnimatedBoatState extends State<AnimatedBoat> with SingleTickerProviderSt
         children: [
           TweenAnimationBuilder(
             duration: const Duration(milliseconds: 2500),
-            curve: Curves.easeOutBack, // Gives that "settling in water" bounce
+            curve: Curves.easeOutBack,
             tween: Tween<Offset>(
               begin: const Offset(-400, 40),
               end: const Offset(0, 0),
@@ -58,7 +58,7 @@ class _AnimatedBoatState extends State<AnimatedBoat> with SingleTickerProviderSt
               );
             },
             child: SlideTransition(
-              position: _floatAnimation, // Adds the bobbing effect
+              position: _floatAnimation,
               child: Image.asset(
                 'assets/boat.png',
                 height: 160,

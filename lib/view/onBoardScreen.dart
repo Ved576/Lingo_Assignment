@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
           AnimatedContainer(
             duration: const Duration(milliseconds: 600),
             curve: Curves.easeInOut,
-            color: vm.currentBackColor, // Directly uses the deep colors from VM
+            color: vm.currentBackColor,
             width: double.infinity,
             height: double.infinity,
           ),
@@ -48,11 +48,10 @@ class HomePage extends StatelessWidget {
                 curve: Curves.easeInOut,
                 height: 200,
                 width: double.infinity,
-                // We wrap the color in the container, and use the ClipPath on it
                 child: ClipPath(
                   clipper: BottomCurveClipper(),
                   child: Container(
-                    color: const Color(0xFF2E7D32), // Hardcoded dark green like video
+                    color: const Color(0xFF2E7D32),
                   ),
                 ),
               ),
@@ -66,7 +65,6 @@ class HomePage extends StatelessWidget {
             child: ArrowButton(
               onTap: () => vm.nextPage(context),
               iconColor: Colors.white,
-              // The arrow icon color animates based on the page
               buttonBgColor: vm.currentColor,
             ),
           ),

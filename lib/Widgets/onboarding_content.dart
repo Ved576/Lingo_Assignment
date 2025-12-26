@@ -52,7 +52,7 @@ class OnboardingContent extends StatelessWidget {
           key: ValueKey(data.imgPath),
           tween: Tween<double>(begin: 0.05, end: 1.1),
           duration: const Duration(milliseconds: 800),
-          curve: Curves.elasticOut, // This creates the "bouncy" effect
+          curve: Curves.elasticOut,
           builder: (context, double value, child) {
             return Transform.scale(
               scale: value,

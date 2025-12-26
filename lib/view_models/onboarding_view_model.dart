@@ -43,7 +43,7 @@ class OnboardingViewModel extends ChangeNotifier {
     if (_currentIndex < pages.length) {
       return pages[_currentIndex].themeColor;
     }
-    return Colors.tealAccent; // Default color for custom screens
+    return Colors.tealAccent;
   }
 
   Color get currentBackColor {
