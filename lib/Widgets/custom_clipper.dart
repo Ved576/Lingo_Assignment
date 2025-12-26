@@ -7,17 +7,15 @@ class BottomCurveClipper extends CustomClipper<Path> {
     double h = size.height;
     double radius = 60;
 
-    // CHANGE THIS: Higher value = lower start/end points
     double startY = 80;
 
     final path = Path();
 
     path.moveTo(0, h);
 
-    // 1. Change the starting height here
+
     path.lineTo(0, startY);
 
-    // 2. Adjust the left hill to start from the new startY
     path.quadraticBezierTo(w * 0.25, 20, (w / 2) - radius, 20);
 
     path.arcToPoint(
@@ -26,7 +24,6 @@ class BottomCurveClipper extends CustomClipper<Path> {
       clockwise: false,
     );
 
-    // 3. Change the ending height here
     path.quadraticBezierTo(w * 0.75, 20, w, startY);
 
     path.lineTo(w, h);

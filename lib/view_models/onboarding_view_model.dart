@@ -9,7 +9,6 @@ class OnboardingViewModel extends ChangeNotifier {
 
   final PageController pageController = PageController();
 
-  // List of data for the 5 screens seen in the video
   final List<onBoardingModel> pages = [
     onBoardingModel(
       title: "AHOY! \n Welcome aboard!",
@@ -38,12 +37,9 @@ class OnboardingViewModel extends ChangeNotifier {
       backColor: Color(0xFF0D1B2A),
 
     ),
-    // Add other screens here...
   ];
 
   Color get currentColor {
-    // If index is within the list, return that color.
-    // If it's 3 or 4 (the custom screens), return a default color.
     if (_currentIndex < pages.length) {
       return pages[_currentIndex].themeColor;
     }
@@ -54,13 +50,12 @@ class OnboardingViewModel extends ChangeNotifier {
     if (_currentIndex < pages.length) {
       return pages[_currentIndex].backColor;
     }
-    return const Color(
-        0xFF05101A); // Default dark background for custom screens
+    return const Color(0xFF05101A);
   }
 
   void onPageChanged(int index) {
     _currentIndex = index;
-    notifyListeners(); // This updates the UI (clipper color, etc.)
+    notifyListeners();
   }
 
   void nextPage(BuildContext context) {
@@ -70,15 +65,12 @@ class OnboardingViewModel extends ChangeNotifier {
         curve: Curves.easeInOutQuart,
       );
     } else {
-      // FADE-UP TRANSITION
       Navigator.pushReplacement(
         context,
         PageRouteBuilder(
           pageBuilder: (context, animation,
               secondaryAnimation) => const StartJourney(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            // 1. Define the Slide (The "Up" part)
-            // Starts 10% below its final position for a subtle lift
             var positionTween = Tween<Offset>(
               begin: const Offset(0.0, 0.1),
               end: Offset.zero,
@@ -87,9 +79,8 @@ class OnboardingViewModel extends ChangeNotifier {
               curve: Curves.easeOutCubic,
             ));
 
-            // 2. Combine Fade and Slide
             return FadeTransition(
-              opacity: animation, // Uses the default 0.0 to 1.0 animation
+              opacity: animation,
               child: SlideTransition(
                 position: positionTween,
                 child: child,

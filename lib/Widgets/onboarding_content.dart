@@ -1,5 +1,3 @@
-// lib/views/onboarding_content.dart
-
 import 'package:flutter/material.dart';
 import '../models/onboarding_model.dart';
 
@@ -12,7 +10,6 @@ class OnboardingContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
         duration: const Duration(seconds: 1),
-    // This transitionBuilder defines the "Fade"
     transitionBuilder: (Widget child, Animation<double> animation) {
     return FadeTransition(
     opacity: animation,
@@ -25,7 +22,6 @@ class OnboardingContent extends StatelessWidget {
       children: [
         const SizedBox(height: 50),
 
-        // 1. Animated Title
         Text(
           data.title ?? "",
           textAlign: TextAlign.center,
@@ -52,8 +48,6 @@ class OnboardingContent extends StatelessWidget {
         ),
         SizedBox(height: 10,),
 
-        // 2. Animated Character (The "Video" Animation)
-        // Using a Key based on the imgPath forces the animation to restart on page change
         TweenAnimationBuilder(
           key: ValueKey(data.imgPath),
           tween: Tween<double>(begin: 0.05, end: 1.1),
@@ -76,8 +70,6 @@ class OnboardingContent extends StatelessWidget {
         ),
 
         const SizedBox(height: 10),
-
-        // 3. Character Name Tag
 
           Text(
             data.characterName ?? "",

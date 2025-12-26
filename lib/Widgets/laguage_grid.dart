@@ -13,7 +13,6 @@ class LanguageGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // You can move this list to your ViewModel later!
     final List<Map<String, String>> languages = [
       {"name": "ENGLISH"},
       {"name": "हिन्दी"},

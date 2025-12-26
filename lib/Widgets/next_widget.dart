@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../view_models/onboarding_view_model.dart';
-
 class ArrowButton extends StatefulWidget {
   final VoidCallback onTap;
   final Color iconColor;
@@ -25,7 +23,6 @@ class _ArrowButtonState extends State<ArrowButton> with SingleTickerProviderStat
   @override
   void initState() {
     super.initState();
-    // Micro-interaction: Button shrinks when tapped
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 100),

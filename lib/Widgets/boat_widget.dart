@@ -15,7 +15,7 @@ class _AnimatedBoatState extends State<AnimatedBoat> with SingleTickerProviderSt
   void initState() {
     super.initState();
 
-    // 1. Setup the Infinite Floating (Bobbing) Animation
+
     _floatController = AnimationController(
       duration: const Duration(seconds: 2),
       vsync: this,
@@ -23,7 +23,7 @@ class _AnimatedBoatState extends State<AnimatedBoat> with SingleTickerProviderSt
 
     _floatAnimation = Tween<Offset>(
       begin: Offset.zero,
-      end: const Offset(0, 0.03), // Subtle 3% vertical movement
+      end: const Offset(0, 0.03),
     ).animate(CurvedAnimation(
       parent: _floatController,
       curve: Curves.easeInOut,
@@ -44,13 +44,12 @@ class _AnimatedBoatState extends State<AnimatedBoat> with SingleTickerProviderSt
       child: Stack(
         alignment: Alignment.center,
         children: [
-          // THE ARRIVAL ANIMATION (Sails in from right/bottom)
           TweenAnimationBuilder(
             duration: const Duration(milliseconds: 2500),
             curve: Curves.easeOutBack, // Gives that "settling in water" bounce
             tween: Tween<Offset>(
-              begin: const Offset(-400, 40), // Starts off-screen
-              end: const Offset(0, 0),      // Arrives at center
+              begin: const Offset(-400, 40),
+              end: const Offset(0, 0),
             ),
             builder: (context, Offset arrivalOffset, child) {
               return Transform.translate(
@@ -61,23 +60,22 @@ class _AnimatedBoatState extends State<AnimatedBoat> with SingleTickerProviderSt
             child: SlideTransition(
               position: _floatAnimation, // Adds the bobbing effect
               child: Image.asset(
-                'assets/boat.png', // Ensure this matches your pubspec.yaml
+                'assets/boat.png',
                 height: 160,
                 fit: BoxFit.contain,
               ),
             ),
           ),
 
-          // OPTIONAL: Water Shadow/Reflection
           Positioned(
-            bottom: 40,
+            bottom: 15,
             child: Container(
-              width: 150,
-              height: 20,
+              width: 180,
+              height: 5,
               decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
+                    color: Colors.lightBlueAccent.withOpacity(0.3),
                     blurRadius: 20,
                     spreadRadius: 5,
                   ),

@@ -1,5 +1,3 @@
-// lib/views/home_page.dart
-
 import 'package:flutter/material.dart';
 import 'package:lingo_assignement/Widgets/onboarding_content.dart';
 import 'package:lingo_assignement/view/startJourney_screen.dart';
@@ -13,12 +11,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Watch the ViewModel for changes (index, color, etc.)
     final vm = context.watch<OnboardingViewModel>();
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      // backgroundColor: const Color(0xFF0D1B2A), // Dark Blue Background
       body: Stack(
         children: [
           AnimatedContainer(
@@ -28,7 +24,7 @@ class HomePage extends StatelessWidget {
             width: double.infinity,
             height: double.infinity,
           ),
-          // LAYER 1: The PageView (Handles Text and Character)
+          // LAYER 1: The PageView
           PageView.builder(
             controller: vm.pageController,
             onPageChanged: vm.onPageChanged,
@@ -43,7 +39,7 @@ class HomePage extends StatelessWidget {
             },
           ),
 
-          // LAYER 2: The Clipper (Color animates smoothly)
+          // LAYER 2: The Clipper
           if(vm.currentIndex < 3)
             Align(
               alignment: Alignment.bottomCenter,
@@ -62,7 +58,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
 
-          // LAYER 3: The Arrow Button (Sitting in the U-dip)
+          // LAYER 3: The Arrow Button
           if(vm.currentIndex < 3)
           Positioned(
             bottom: 140,
